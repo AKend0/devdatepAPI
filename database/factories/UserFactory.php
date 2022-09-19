@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Applier;
+use App\Models\Turn;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 

@@ -8,7 +8,9 @@ use App\Models\Assist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\AssistCollection;
+use App\Models\Applier;
 use App\Models\Turn;
+use Illuminate\Support\Facades\DB;
 
 class AssistController extends Controller
 {
@@ -26,7 +28,7 @@ class AssistController extends Controller
      */
     public function index()
     {
-        return new AssistCollection(Assist::orderBy('id','asc')->paginate());
+    //    return new AssistCollection(Assist::orderBy('id','asc')->paginate());
     }
 
     /**
@@ -35,14 +37,14 @@ class AssistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function registro(Request $request)
     {
         $carbon     = Carbon::now(); //fecha y hora
         $hIngreso   = $carbon->toTimeString(); //hora  HH:mm:ss
         $user       = User::find($request->id);
         $prueba     = Carbon::create(0,0,0,8,11,0)->toTimeString();
         $turno      = Turn::find($user->applier->turn_id);
-
+        
 
         //es necesario instanciar los horarios con carbon para utilizar sus metodos
         $turnoIn    = Carbon::createFromTimeString($turno->entrada,$this->tz);
@@ -55,8 +57,14 @@ class AssistController extends Controller
 
         $assist = new Assist();
         $assist->user_id = $request->id;
-        $assist->hora_ingreso = $hIngreso;
+        $assist->applier_id = $user->applier_id;
+        $assist->hora_ingreso = $hIngreso; 
         $assist->fecha = $carbon->toDateString();
+        $assist->dni = $user->applier->dni;
+        $assist->nombres_com	 = $user->applier->nombre;
+        $assist->plataforma = $user->applier->platform_id;
+        //$assist->estado_asist = $assist->status;  tecnicamente status dice el estado q esta xd 
+        $assist->turno = $user->applier->turn_id;
 
             //Si el usuario ingresa entre la apertura de horario y la
             //toleancia de 10 mins pasado su horario de ingreso

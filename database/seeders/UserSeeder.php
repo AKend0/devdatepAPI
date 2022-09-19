@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Applier;
+use App\Models\Turn;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -33,6 +35,14 @@ class UserSeeder extends Seeder
             'password'      => bcrypt('laravel')
         ])->assignRole('admin');
 
-        User::factory(30)->create();
+        $users = User::factory(30)->create();
+
+        foreach($users as $user)
+        {
+            $applier = Applier::where('id',$user->applier_id);
+            $applier->update([
+                'turn_id' => Turn::inRandomOrder()->first()->id,
+            ]);
+        }
     }
 }

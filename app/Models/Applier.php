@@ -66,5 +66,13 @@ class Applier extends Model
     {
         return $this->hasOne(Turn::class);
     }
+    public function assists()
+    {
+        return $this->hasMany(Assist::class);
+    }
+    public function absences()
+    {
+        return $this->hasMany(Absense::class);
+    }
 
 }

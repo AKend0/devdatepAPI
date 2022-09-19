@@ -15,7 +15,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('Assist:Command')->everyminute()->appendOutputTo('schedule.log');;
+        $schedule->command('Assist:Command')
+            ->daily()->at('13:00')->at('18:00')->at('23:00')
+             ->appendOutputTo('schedule.log');
     }
 
     /**

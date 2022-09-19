@@ -148,6 +148,7 @@ class ComposerStaticInit5695afe962d89f5fb3f0d5d32548b906
         ),
         'J' => 
         array (
+            'Jenssegers\\Agent\\' => 17,
             'Jaybizzle\\CrawlerDetect\\' => 24,
         ),
         'I' => 
@@ -484,6 +485,10 @@ class ComposerStaticInit5695afe962d89f5fb3f0d5d32548b906
         array (
             0 => __DIR__ . '/..' . '/laravel/sail/src',
         ),
+        'Jenssegers\\Agent\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jenssegers/agent/src',
+        ),
         'Jaybizzle\\CrawlerDetect\\' => 
         array (
             0 => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src',
@@ -625,10 +630,23 @@ class ComposerStaticInit5695afe962d89f5fb3f0d5d32548b906
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\AssistCommand' => __DIR__ . '/../..' . '/app/Console/Commands/AssistCommand.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Api\\GoogleMeetController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/GoogleMeetController.php',
         'App\\Http\\Controllers\\Api\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/LoginController.php',
+        'App\\Http\\Controllers\\Api\\V1\\AbsenseController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/AbsenseController.php',
         'App\\Http\\Controllers\\Api\\V1\\ApplierController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/ApplierController.php',
+        'App\\Http\\Controllers\\Api\\V1\\AreaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/AreaController.php',
+        'App\\Http\\Controllers\\Api\\V1\\AssistController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/AssistController.php',
+        'App\\Http\\Controllers\\Api\\V1\\CountryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/CountryController.php',
+        'App\\Http\\Controllers\\Api\\V1\\DepartmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/DepartmentController.php',
+        'App\\Http\\Controllers\\Api\\V1\\DistrictController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/DistrictController.php',
+        'App\\Http\\Controllers\\Api\\V1\\DivisionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/DivisionController.php',
+        'App\\Http\\Controllers\\Api\\V1\\PerfilController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/PerfilController.php',
+        'App\\Http\\Controllers\\Api\\V1\\ProvinceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/ProvinceController.php',
+        'App\\Http\\Controllers\\Api\\V1\\TurnController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/TurnController.php',
+        'App\\Http\\Controllers\\Api\\V1\\platformController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/platformController.php',
         'App\\Http\\Controllers\\Api\\WhatsappController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/WhatsappController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -642,8 +660,20 @@ class ComposerStaticInit5695afe962d89f5fb3f0d5d32548b906
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Resources\\V1\\ApplierCollection' => __DIR__ . '/../..' . '/app/Http/Resources/V1/ApplierCollection.php',
         'App\\Http\\Resources\\V1\\ApplierResource' => __DIR__ . '/../..' . '/app/Http/Resources/V1/ApplierResource.php',
+        'App\\Http\\Resources\\V1\\AreaResource' => __DIR__ . '/../..' . '/app/Http/Resources/V1/AreaResource.php',
+        'App\\Http\\Resources\\V1\\CountryResource' => __DIR__ . '/../..' . '/app/Http/Resources/V1/CountryResource.php',
+        'App\\Http\\Resources\\V1\\DepartmentResource' => __DIR__ . '/../..' . '/app/Http/Resources/V1/DepartmentResource.php',
+        'App\\Http\\Resources\\V1\\DistrictResource' => __DIR__ . '/../..' . '/app/Http/Resources/V1/DistrictResource.php',
+        'App\\Http\\Resources\\V1\\DivisionResource' => __DIR__ . '/../..' . '/app/Http/Resources/V1/DivisionResource.php',
+        'App\\Http\\Resources\\V1\\PerfilResource' => __DIR__ . '/../..' . '/app/Http/Resources/V1/PerfilResource.php',
+        'App\\Http\\Resources\\V1\\PlatformResource' => __DIR__ . '/../..' . '/app/Http/Resources/V1/PlatformResource.php',
+        'App\\Http\\Resources\\V1\\ProvinceResource' => __DIR__ . '/../..' . '/app/Http/Resources/V1/ProvinceResource.php',
+        'App\\Http\\Resources\\V1\\TurnResource' => __DIR__ . '/../..' . '/app/Http/Resources/V1/TurnResource.php',
+        'App\\Mail\\SendTokenResetPassword' => __DIR__ . '/../..' . '/app/Mail/SendTokenResetPassword.php',
+        'App\\Models\\Absense' => __DIR__ . '/../..' . '/app/Models/Absense.php',
         'App\\Models\\Applier' => __DIR__ . '/../..' . '/app/Models/Applier.php',
         'App\\Models\\Area' => __DIR__ . '/../..' . '/app/Models/Area.php',
+        'App\\Models\\Assist' => __DIR__ . '/../..' . '/app/Models/Assist.php',
         'App\\Models\\Country' => __DIR__ . '/../..' . '/app/Models/Country.php',
         'App\\Models\\Department' => __DIR__ . '/../..' . '/app/Models/Department.php',
         'App\\Models\\District' => __DIR__ . '/../..' . '/app/Models/District.php',
@@ -652,9 +682,11 @@ class ComposerStaticInit5695afe962d89f5fb3f0d5d32548b906
         'App\\Models\\Platform' => __DIR__ . '/../..' . '/app/Models/Platform.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
         'App\\Models\\Province' => __DIR__ . '/../..' . '/app/Models/Province.php',
+        'App\\Models\\Publicaciones' => __DIR__ . '/../..' . '/app/Models/Publicaciones.php',
         'App\\Models\\TokenPassword' => __DIR__ . '/../..' . '/app/Models/TokenPassword.php',
         'App\\Models\\Turn' => __DIR__ . '/../..' . '/app/Models/Turn.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\token' => __DIR__ . '/../..' . '/app/Models/token.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -767,6 +799,7 @@ class ComposerStaticInit5695afe962d89f5fb3f0d5d32548b906
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Database\\Factories\\ApplierFactory' => __DIR__ . '/../..' . '/database/factories/ApplierFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\ApplierSeeder' => __DIR__ . '/../..' . '/database/seeders/ApplierSeeder.php',
         'Database\\Seeders\\AreaSeeder' => __DIR__ . '/../..' . '/database/seeders/AreaSeeder.php',
@@ -20109,6 +20142,9 @@ class ComposerStaticInit5695afe962d89f5fb3f0d5d32548b906
         'Jaybizzle\\CrawlerDetect\\Fixtures\\Crawlers' => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src/Fixtures/Crawlers.php',
         'Jaybizzle\\CrawlerDetect\\Fixtures\\Exclusions' => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src/Fixtures/Exclusions.php',
         'Jaybizzle\\CrawlerDetect\\Fixtures\\Headers' => __DIR__ . '/..' . '/jaybizzle/crawler-detect/src/Fixtures/Headers.php',
+        'Jenssegers\\Agent\\Agent' => __DIR__ . '/..' . '/jenssegers/agent/src/Agent.php',
+        'Jenssegers\\Agent\\AgentServiceProvider' => __DIR__ . '/..' . '/jenssegers/agent/src/AgentServiceProvider.php',
+        'Jenssegers\\Agent\\Facades\\Agent' => __DIR__ . '/..' . '/jenssegers/agent/src/Facades/Agent.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',
         'Laravel\\Sail\\Console\\PublishCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/PublishCommand.php',
         'Laravel\\Sail\\SailServiceProvider' => __DIR__ . '/..' . '/laravel/sail/src/SailServiceProvider.php',

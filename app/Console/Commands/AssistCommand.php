@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Absense;
 use Illuminate\Console\Command;
 use App\Models\Applier;
-use App\Models\Turn;
+use App\Models\Assist;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 class AssistCommand extends Command
@@ -30,31 +32,31 @@ class AssistCommand extends Command
      */
     public function handle()
     {
-        $prueba     = Carbon::create(0,0,0,13,0,0)->toTimeString();
-        //$carbon     = Carbon::now();
-        // $hora   = $carbon->toTimeString();
-         echo $prueba , " ";
-       if ($prueba == '13:00:00' || $prueba == '18:00:00' || $prueba == '23:00:00') {
-             $turnoid = DB::table('turns')->where('salida', $prueba)->value('id');
+      //$prueba     = Carbon::create(0,0,0,13,0,0)->toTimeString();
+      $carbon     = Carbon::now();
+      $hora   = $carbon->toTimeString();
+      echo $hora , " ";
+      if ($hora == '13:00:00' || $hora == '18:00:00' || $hora == '23:00:00') {
+         $turnid = DB::table('turns')->where('salida', $hora)->first();
 
-              echo $turnoid , "  ";
+     //         echo $turnoid , "  ";
              /* foreach ($turnos as $turn){
                 $user=$turn->id;
                 print_r($turn->turno);//muestra turno 
                 echo " ";
              } */
-          $appliersid = Applier::Where('turn_id', $turnoid)->pluck('id');
+     //     $appliersid = Applier::Where('turn_id', $turnoid)->pluck('id');
           
-        echo $appliersid;
+    //    echo $appliersid;
         //foreach ($appliers as $applier) {
         //    $iduser= $applier->id;
          //   echo $applier->nombre,' || ';    //muestra usuarios del turno 
         // }
-         $assists = DB::table('assists')->where('user_id', $appliersid )->get();
-           echo $assists;
-       }else{
-        echo "no hay turno";
-      } 
+        // $assists = DB::table('assists')->where('user_id', $appliersid )->get();
+         //  echo $assists;
+    //   }else{
+    //    echo "no hay turno";
+    //  } 
       
           
 
@@ -82,7 +84,47 @@ class AssistCommand extends Command
         }
         echo 'Hora actual:',$hora,' '; */
         
+        //$turnid = 1;
+        $aplicantes = Applier::Where('turn_id',$turnid->id)->pluck('id');
+
+       // $asistentes = Assist::whereTime('hora_ingreso','>','13:00:00')->whereTime('hora_ingreso','<','18:00:00')->pluck('user_id');
+       $asistentes = Assist::whereTime('hora_ingreso','>',$turnid->entrada)->whereTime('hora_ingreso','<',$turnid->salida)->pluck('applier_id');
+
+        $faltantes = Applier::Where('turn_id',$turnid->id)->whereNotIn('id',$asistentes)->pluck('id');
         
+        echo $turnid->id;
+        echo '<br>';
+        echo $aplicantes;
+        echo '<br>';
+        echo $asistentes;
+        echo '<br>';    
+        echo $faltantes;
+     
+
+foreach ($faltantes as $faltante){
         
+        $falta = new Absense();
+        $falta->applier_id = $faltante;
+        $falta->user_id =  User::where('applier_id',$faltante)->value('id');
+        $falta->fecha = Carbon::now()->toDateString();
+        $falta->save();
+         
+
+        
+    /*      Absense::create(
+        [
+        'user_id' =>$faltante,
+        'turn_id' => $turnid->id,
+        'fecha' => $hora,
+        ]
+        ); */
+        
+     }
+        
+    }else{
+        echo '<br>'; 
+        echo "no hay nada por el momento";
     }
+    }
+
 }

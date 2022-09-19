@@ -24,7 +24,7 @@ class ApplierFactory extends Factory
             'email'     =>  fake()->safeEmail(),
             'phone'     =>  fake()->phoneNumber(),
             'dni'       =>  fake()->randomNumber(8,true),
-            'turn_id'   =>  Turn::inRandomOrder()->first(),
+            'turn_id'   =>  null,
         ];
     }
 }

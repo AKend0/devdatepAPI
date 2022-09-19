@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\V1\platformController;
 use App\Http\Controllers\Api\V1\ProvinceController;
 use App\Http\Controllers\Api\V1\DepartmentController;
 use App\Http\Controllers\Api\V1\ApplierController as ApplierV1;
+use App\Http\Controllers\Api\V1\AssistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +51,5 @@ Route::apiResource('v1/divisiones',DivisionController::class);
 Route::apiResource('v1/department',DepartmentController::class);
 Route::apiResource('v1/distritos',DistrictController::class);
 Route::apiResource('v1/plataformas',platformController::class);
+Route::post('v1/assist',[AssistController::class,'registro']);
+

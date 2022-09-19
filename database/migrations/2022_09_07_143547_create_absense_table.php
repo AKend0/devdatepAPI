@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('assists', function (Blueprint $table) {
+        Schema::create('absense', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');// id de la tabla users
-            $table->foreignId('applier_id')->constrained('appliers')->onDelete('cascade');// id de la tabla appliers
-            $table->tinyInteger('status');                       // entero de 0 a 255
-            $table->time('hora_ingreso');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');// id de la tabla users                    // entero de 0 a 255
+            $table->foreignId('turn_id')->nullable()->constrained('turns')->onDelete('cascade');
             $table->date('fecha');
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assists');
+        Schema::dropIfExists('absense');
     }
 };

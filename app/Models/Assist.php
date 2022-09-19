@@ -13,6 +13,21 @@ class Assist extends Model
 
     protected $fillable = [
         'user_id',
+        'applier_id',
+        'fecha_Asi',
+        'hora_Asi',
+        'dni',
+        'nombres_com',
+        'plataforma' ,
+        'sistema_op',
+        'tipo_disp',
+       'useragent',
+       'usertime',
+        'ip_usu',
+        'nro_int',
+    //    'estado_asist',
+        'turno'
+
     ];
 
     protected $guarded = [
